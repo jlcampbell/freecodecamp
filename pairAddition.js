@@ -18,18 +18,24 @@ function pairwise(arr, arg) {
     }
     return accum;
   }, {});
+  console.log(objOfNumbers);
+  for (var i=0; i<arr.length; i++){
+      console.log(objOfNumbers[arr[i]][0]);
+      if (objOfNumbers[arr[i]]>0){
+          console.log(arr[i]+" in objOfNumbers");
+          if (objOfNumbers[arg-arr[i]]>0){
+              console.log(arg-arr[i]+" in objOfNumbers (a partner)")
+              count += objOfNumbers[arr[i]][0];
+              count += objOfNumbers[arg-arr[i]][0];
 
-  for (i=0; i<arr.length; i++){
+              objOfNumbers[arr[i]].splice(0,1);
 
-      if (arr[i] in objOfNumbers){
-          console.log(arr[i]+"in objOfNumbers");
-          if (arg-arr[i] in objOfNumbers){
-              count += objOfNumbers[arr[i][0]];
-              count += objOfNumbers[(arg-arr[i])[0]];
-              delete objOfNumbers[arr[i][0]];
-              delete objOfNumbers[(arg-arr[i])[0]];
+              objOfNumbers[arg-arr[i]].splice(0,1);
               console.log(objOfNumbers);
           }
+      }
+      else {
+
       }
 
   }
