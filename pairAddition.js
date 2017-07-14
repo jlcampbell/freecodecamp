@@ -11,20 +11,37 @@ function pairwise(arr, arg) {
      }
     return accum;
   }, {});
-
+  console.log(objOfNumbers);
+  var a = 0;
   for (var key in objOfNumbers){
+
       if (arg-key==key){
           if (objOfNumbers[key].length%2 == 1){
-              console.log(objOfNumbers[key].length%2);
+
               objOfNumbers[key].splice(-1);
           }
-          console.log(objOfNumbers);
+
       }
+      if (objOfNumbers[key].length>objOfNumbers[arg-key].length){
+          a=objOfNumbers[key].length-objOfNumbers[arg-key].length;
+          objOfNumbers[key].splice(-a);
+      }
+      if (objOfNumbers[arg-key].length>objOfNumbers[key].length){
+          a=objOfNumbers[arg-key].length-objOfNumbers[key].length;
+          objOfNumbers[arg-key].splice(-a);
+      }
+
+      var count2 = objOfNumbers[key].reduce(function(accum,num){
+          return accum+num;
+      },0);
+      count+=count2;
+
+
   }
 
- 
 
-  return objOfNumbers;
+
+  return count;
 }
 
 
