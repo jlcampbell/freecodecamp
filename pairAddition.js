@@ -18,20 +18,23 @@ function pairwise(arr, arg) {
     }
     return accum;
   }, {});
-  console.log(objOfNumbers);
+
   for (var i=0; i<arr.length; i++){
-      console.log(objOfNumbers[arr[i]][0]);
-      if (objOfNumbers[arr[i]]>0){
+
+      if (objOfNumbers[arr[i]].length>0){
           console.log(arr[i]+" in objOfNumbers");
-          if (objOfNumbers[arg-arr[i]]>0){
-              console.log(arg-arr[i]+" in objOfNumbers (a partner)")
-              count += objOfNumbers[arr[i]][0];
-              count += objOfNumbers[arg-arr[i]][0];
+          if (objOfNumbers.hasOwnProperty(arg-arr[i])){
+              if (objOfNumbers[arg-arr[i]].length>0){
+                console.log(arg-arr[i]+" in objOfNumbers (a partner)")
+                count += objOfNumbers[arr[i]][0];
+                console.log("adding index of "+arr[i]+" which is "+objOfNumbers[arr[i]][0]+" count now is "+count);
+                count += objOfNumbers[arg-arr[i]][0];
+                console.log("adding index of "+(arg-arr[i])+" which is "+objOfNumbers[arg-arr[i]][0]+" count now is "+count);
+                objOfNumbers[arr[i]].splice(0,1);
 
-              objOfNumbers[arr[i]].splice(0,1);
+                objOfNumbers[arg-arr[i]].splice(0,1);
 
-              objOfNumbers[arg-arr[i]].splice(0,1);
-              console.log(objOfNumbers);
+              }
           }
       }
       else {
